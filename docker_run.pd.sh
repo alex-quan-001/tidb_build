@@ -33,3 +33,7 @@ docker run \
   ${image_name} \
   /bin/bash
 
+# apt-get update; apt-get install unzip -y
+# export GO111MODULE=on
+# export GOPROXY=https://goproxy.cn
+# time make
