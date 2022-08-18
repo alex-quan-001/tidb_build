@@ -39,4 +39,7 @@ docker run \
   /bin/bash
 
 #  -p 4001:4000 \
-# make server 
+
+# export GO111MODULE=on
+# export GOPROXY=https://goproxy.cn
+# make
