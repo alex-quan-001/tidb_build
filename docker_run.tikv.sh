@@ -3,13 +3,12 @@
 bin=`dirname $0`
 bin=`cd $bin;pwd`
 
-src="$bin/tikv"
+src="$bin/../tidb_src/tikv"
 container_src_docker="/code"
 container_cargohome="/cargo/CARGO_HOME"
 cargo_source="${bin}/tikv.docker.CARGO_HOME/.cargo"
 docker_name="tikv_build"
-image_name="rust:1.57.0"
-#image_name="tikv_build:0.1"
+image_name="rust:1.63.0"
 
 #docker stop ${docker_name} > /dev/null 2>&1
 #docker rm   ${docker_name} > /dev/null 2>&1
