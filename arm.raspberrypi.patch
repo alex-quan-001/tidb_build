@@ -1,0 +1,50 @@
+diff --git a/tidb-server/main.go b/tidb-server/main.go
+index 36b9e9029..aaef59ec4 100644
+--- a/tidb-server/main.go
++++ b/tidb-server/main.go
+@@ -604,7 +604,7 @@ func setGlobalVars() {
+ 	// Disable automaxprocs log
+ 	nopLog := func(string, ...interface{}) {}
+ 	_, err := maxprocs.Set(maxprocs.Logger(nopLog))
+-	terror.MustNil(err)
++	// terror.MustNil(err)
+ 	// We should respect to user's settings in config file.
+ 	// The default value of MaxProcs is 0, runtime.GOMAXPROCS(0) is no-op.
+ 	runtime.GOMAXPROCS(int(cfg.Performance.MaxProcs))
+@@ -685,7 +685,7 @@ func setGlobalVars() {
+ 	// use server-memory-quota as max-plan-cache-memory
+ 	plannercore.PreparedPlanCacheMaxMemory.Store(cfg.Performance.ServerMemoryQuota)
+ 	total, err := memory.MemTotal()
+-	terror.MustNil(err)
++	//terror.MustNil(err)
+ 	// if server-memory-quota is larger than max-system-memory or not set, use max-system-memory as max-plan-cache-memory
+ 	if plannercore.PreparedPlanCacheMaxMemory.Load() > total || plannercore.PreparedPlanCacheMaxMemory.Load() <= 0 {
+ 		plannercore.PreparedPlanCacheMaxMemory.Store(total)
+diff --git a/util/memory/meminfo.go b/util/memory/meminfo.go
+index e5125468b..5facfd7ce 100644
+--- a/util/memory/meminfo.go
++++ b/util/memory/meminfo.go
+@@ -22,7 +22,7 @@ import (
+ 	"sync"
+ 	"time"
+ 
+-	"github.com/pingcap/tidb/parser/terror"
++//	"github.com/pingcap/tidb/parser/terror"
+ 	"github.com/shirou/gopsutil/v3/mem"
+ )
+ 
+@@ -140,10 +140,10 @@ func init() {
+ 	serverMemUsage = &memInfoCache{
+ 		RWMutex: &sync.RWMutex{},
+ 	}
+-	_, err := MemTotal()
+-	terror.MustNil(err)
+-	_, err = MemUsed()
+-	terror.MustNil(err)
++	//_, err := MemTotal()
++	//terror.MustNil(err)
++	//_, err = MemUsed()
++	//terror.MustNil(err)
+ }
+ 
+ func inContainer() bool {
