@@ -32,5 +32,5 @@ docker run \
   ${image_name} \
   /bin/bash
 
-
+# apt-get update; apt-get install cmake -y
 #  -p 20160:20160 \
