@@ -39,3 +39,4 @@ docker run \
   /bin/bash
 
 #  -p 4001:4000 \
+# make server 
